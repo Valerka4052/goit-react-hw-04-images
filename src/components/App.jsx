@@ -27,51 +27,50 @@ export function App (){
   const [loading, setLoading] = useState(false);
   const [lastPage, setLastPage,] = useState(false);
   
-  useEffect(() => {
-    if (page === 1) { return };
-    setLoading(true);
-    getApi(searchQuerry, page)
-      .then((array) => {
-        if (array.length < ItemsPerPage) {
-          setLastPage(true);
-        };
-        setPictures([...pictures, ...array]);
-       setLoading(false);
-      });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  // useEffect(() => {
+  //   if (page === 1) { return };
+  //   setLoading(true);
+  //   getApi(searchQuerry, page)
+  //     .then((array) => {
+  //       if (array.length < ItemsPerPage) {
+  //         setLastPage(true);
+  //       };
+  //       setPictures([...pictures, ...array]);
+  //      setLoading(false);
+  //     });
 
-  useEffect(() => {
-    if (searchQuerry === '') { return }
-    if (pictures.length > 0) {
-      setPictures([])
-    };
-    setLoading(true);
-    getApi(searchQuerry, page)
-      .then((array) => {
-        if (array.length < ItemsPerPage && array.length > 0) {
-          setLastPage(true)
-        };
-        if (array.length === ItemsPerPage) {
-          setLastPage(false)
-        };
-        if (array.length) {
-          setPictures(array)
-        } else {
-          Notiflix.Notify.failure('Please enter valid search querry');
-          setPictures([])
-        };
-        setLoading(false);
-      })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuerry]);
+  // }, [page]);
+
+  // useEffect(() => {
+  //   if (searchQuerry === '') { return }
+  //   if (pictures.length > 0) {
+  //     setPictures([])
+  //   };
+  //   setLoading(true);
+  //   getApi(searchQuerry, page)
+  //     .then((array) => {
+  //       if (array.length < ItemsPerPage && array.length > 0) {
+  //         setLastPage(true)
+  //       };
+  //       if (array.length === ItemsPerPage) {
+  //         setLastPage(false)
+  //       };
+  //       if (array.length) {
+  //         setPictures(array)
+  //       } else {
+  //         Notiflix.Notify.failure('Please enter valid search querry');
+  //         setPictures([])
+  //       };
+  //       setLoading(false);
+  //     })
+  //   }, [searchQuerry]);
 
 
 
 //   useEffect(() => {
-//   if (page !==1) {
+//   if (page !==1  && searchQuerry !== '') {
 //         // Дії для кнопки Load More
-//      setLoading(!loading);
+//      setLoading(true);
 //       getApi(searchQuerry, page)
 //         .then((array) => {
 //           if (array.length < ItemsPerPage) {
@@ -82,7 +81,7 @@ export function App (){
 //           // this.setState(prevState => {
 //           //   return { pictures: [...prevState.pictures, ...array] }
 //           // });
-//           setLoading(!loading);
+//           setLoading(false);
 //         });
 //     } else if (searchQuerry !== '') {
 //       // Дії для searchBar
@@ -90,7 +89,7 @@ export function App (){
 //         setPictures([]);
 //         // this.setState({ pictures: [] })
 //       };
-//       setLoading(!loading);
+//       setLoading(true);
 //       getApi(searchQuerry, page)
 //         .then((array) => {
 //           if (array.length < ItemsPerPage && array.length > 0) {
@@ -109,10 +108,10 @@ export function App (){
 //             setPictures([array]);
 //             // this.setState({ pictures: [] })
 //           };
-//           setLoading(!loading);
+//           setLoading(false);
 //         })
 //     };
-// },[loading, page, pictures, searchQuerry])
+// },[page, pictures, searchQuerry])
 
 
 //  componentDidUpdate(_, prevState) {
