@@ -27,25 +27,25 @@ export const App = () => {
   const [loading, setLoading] = useState(false);
   const [lastPage, setLastPage,] = useState(false);
   
-  // useEffect(() => {
-  //   console.log('load more')
-  //   if (page === 1) { return console.log('exit load more')};
-  //   setLoading(true);getApi(searchQuerry, page).then((array) => {
-  //       if (array.length < ItemsPerPage) {setLastPage(true);};setPictures([...pictures, ...array]);setLoading(false);});
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [searchQuerry]);
+  useEffect(() => {
+    console.log('load more')
+    if (page === 1) { return console.log('exit load more')};
+    setLoading(true);getApi(searchQuerry, page).then((array) => {
+        if (array.length < ItemsPerPage) {setLastPage(true);};setPictures([...pictures, ...array]);setLoading(false);});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuerry]);
 
-  // useEffect(() => {
-  //   console.log('search')
-  //   if (searchQuerry === '') { return console.log('exit search')}
-  //   if (pictures.length > 0) {setPictures([])}; setLoading(true);getApi(searchQuerry, page)
-  //     .then((array) => {
-  //       if (array.length < ItemsPerPage && array.length > 0) {setLastPage(true)};
-  //       if (array.length === ItemsPerPage) {setLastPage(false)};
-  //       if (array.length) { setPictures(array) }
-  //       else {Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]);};setLoading(false);})
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, [searchQuerry]);
+  useEffect(() => {
+    console.log('search')
+    if (searchQuerry === '') { return console.log('exit search')}
+    if (pictures.length > 0) {setPictures([])}; setLoading(true);getApi(searchQuerry, page)
+      .then((array) => {
+        if (array.length < ItemsPerPage && array.length > 0) {setLastPage(true)};
+        if (array.length === ItemsPerPage) {setLastPage(false)};
+        if (array.length) { setPictures(array) }
+        else {Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]);};setLoading(false);})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchQuerry]);
 
 
   
