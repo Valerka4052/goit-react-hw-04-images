@@ -12,7 +12,7 @@ export class Modal extends Component {
     };
     
     modalEventLisetener = (e) => {
-        if (e.target.id === 'overlay') { return this.props.toggleModal() };
+        if (e.target.id === 'overlay') { return this.props.setShowModal(false) };
     };
 
     render() {

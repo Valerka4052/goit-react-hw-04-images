@@ -21,7 +21,7 @@ export function App (){
 
 
   const [pictures, setPictures] = useState([]);
-  // const [searchQuerry, setSearchQuerry] = useState('');
+  const [searchQuerry, setSearchQuerry] = useState('');
   const [page, setPage] = useState(1);
   const [largeImage, setLargeImage] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -80,7 +80,7 @@ const  getLargeImage = (e) => {
     setLargeImage(e.target.id)
     // this.setState({ largeImage: e.target.id });
     if(e.target.nodeName==='IMG'){
-     toggleModal();
+    setShowModal(true)
     };
   };
 
@@ -127,7 +127,7 @@ const  loadMore = () => {
         {!loading && pictures.length > 0 && !lastPage && <Button loadMore={loadMore} />}
         {showModal && <Modal
           LargeImage={largeImage}
-          toggleModal={toggleModal}
+          setShowModal={setShowModal}
         />}
       </div>
     );
