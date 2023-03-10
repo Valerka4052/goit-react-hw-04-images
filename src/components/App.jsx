@@ -1,4 +1,4 @@
-// import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import { getApi, ItemsPerPage } from '../api'
 import { SearchBar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery'
@@ -6,7 +6,7 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import Notiflix from 'notiflix';
-import { useState, useEffect } from 'react';
+
 
 export const App = () => {
   const [pictures, setPictures] = useState([]);
@@ -19,8 +19,8 @@ export const App = () => {
   
   useEffect(() => {
     console.log('useeffect')
-    if (page !== 1) {
-      console.log('load more')
+    if (page > 1&&searchQuerry) {
+      console.log('load more');
       setLoading(true); getApi(searchQuerry, page).then((array) => {
         if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
       });
