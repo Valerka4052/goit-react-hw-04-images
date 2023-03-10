@@ -69,9 +69,9 @@ export function App (){
 //   };
  
 // const  toggleModal = () => {
-//     setShowModal(!showModal)
-//     // this.setState(({ showModal }) => ({ showModal: !showModal }));
-//   };
+    // setShowModal(!showModal)
+    // this.setState(({ showModal }) => ({ showModal: !showModal }));
+  // };
   // toggleLoading = () => {
   //   this.setState(({ loading }) => ({ loading: !loading }));
   // };
