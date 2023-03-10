@@ -8,7 +8,7 @@ import { Modal } from './Modal/Modal';
 import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 
-export function App (){
+export const App = () =>{
   // state = {
   //   pictures: [],
   //   searchQuerry: '',
