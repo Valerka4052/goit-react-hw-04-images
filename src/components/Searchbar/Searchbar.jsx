@@ -1,22 +1,18 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+
 import { Header, Form, Button, ButtonLabel, Field } from './Searchbar.styled';
 
 import { ReactComponent as SearchIcon } from "../../icons/search.svg";
 
-export class SearchBar extends Component {
-    static propTypes = {
-        onSearch: PropTypes.func.isRequired,
-    };
+export function SearchBar ({onSearch}) {
 
-    getValue = (initialValues) => {
+   const getValue = (initialValues) => {
         const search = initialValues.searchQuerry.trim();
-            this.props.onSearch(search);
+            onSearch(search);
     };
 
-  render()  {
 const validationSchema = Yup.object({
             searchQuerry: Yup.string(),
 });
@@ -24,7 +20,7 @@ const validationSchema = Yup.object({
           <Header>
               <Formik
                   initialValues={{ searchQuerry: '' }}
-                  onSubmit={(value) => this.getValue(value)}
+                  onSubmit={(value) => getValue(value)}
                   validationSchema={validationSchema}
               >
                   <Form>
@@ -43,4 +39,7 @@ const validationSchema = Yup.object({
           </Header>
       );
     };
-};
+
+    SearchBar.propTypes = {
+        onSearch: PropTypes.func.isRequired,
+    };
