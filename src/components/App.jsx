@@ -6,7 +6,7 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import Notiflix from 'notiflix';
-
+import { useState, useEffect } from 'react';
 export class App extends Component{
   state = {
     pictures: [],
@@ -17,6 +17,16 @@ export class App extends Component{
     loading: false,
     lastPage: false,
   };
+
+  
+  const [pictures, setPictures] = useState([]);
+  const [searchQuerry, setSearchQuerry] = useState('');
+  const [page, setPage] = useState(1);
+  const [largeImage, setLargeImage] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [lastPage, setLastPage,] = useState(false);
+  
 
  componentDidUpdate(_, prevState) {
   const { state: { page, searchQuerry }, toggleLoading } = this;
