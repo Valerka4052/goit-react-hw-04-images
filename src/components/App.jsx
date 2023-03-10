@@ -91,7 +91,7 @@ const  searchQuerryToState = (value) => {
       Notiflix.Notify.warning('Please enter the search querry');
       return;
     };
-    setSearchQuerry(value);
+    // setSearchQuerry(value);
     setPage(1);
     // this.setState({
     //   searchQuerry: value,
