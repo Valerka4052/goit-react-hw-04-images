@@ -68,10 +68,10 @@ export function App (){
 //     };
 //   };
  
-const  toggleModal = () => {
-    setShowModal(!showModal)
-    // this.setState(({ showModal }) => ({ showModal: !showModal }));
-  };
+// const  toggleModal = () => {
+//     setShowModal(!showModal)
+//     // this.setState(({ showModal }) => ({ showModal: !showModal }));
+//   };
   // toggleLoading = () => {
   //   this.setState(({ loading }) => ({ loading: !loading }));
   // };
