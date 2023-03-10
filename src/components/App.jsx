@@ -28,20 +28,22 @@ export const App = () => {
   const [lastPage, setLastPage,] = useState(false);
   
   useEffect(() => {
-    if (page === 1) { return };
+    console.log('load more')
+    if (page === 1) { return console.log('exit load more')};
     setLoading(true);getApi(searchQuerry, page).then((array) => {
         if (array.length < ItemsPerPage) {setLastPage(true);};setPictures([...pictures, ...array]);setLoading(false);});
   }, [page]);
 
   useEffect(() => {
-    if (searchQuerry === '') { return }
+    console.log('search')
+    if (searchQuerry === '') { return console.log('exit search')}
     if (pictures.length > 0) {setPictures([])}; setLoading(true);getApi(searchQuerry, page)
       .then((array) => {
         if (array.length < ItemsPerPage && array.length > 0) {setLastPage(true)};
         if (array.length === ItemsPerPage) {setLastPage(false)};
         if (array.length) { setPictures(array) }
         else {Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]);};setLoading(false);})
-    }, [searchQuerry,pictures]);
+    }, [searchQuerry]);
 
 
   
