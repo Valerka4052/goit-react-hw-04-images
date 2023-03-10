@@ -17,10 +17,9 @@ export const App = () => {
   const [loading, setLoading] = useState(false);
   const [lastPage, setLastPage,] = useState(false);
   
+ // для кнопки Load more----------------------------
   useEffect(() => {
-    console.log('useeffect')
     if (page > 1) {
-      console.log('load more');
       setLoading(true); getApi(searchQuerry, page).then((array) => {
         if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
       });
@@ -28,11 +27,9 @@ export const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-
+// Для кнопки Search  ------------------------------
 useEffect(() => {
-    console.log('useeffect')
     if (searchQuerry !== '') {
-      console.log('search')
       if (pictures.length > 0) { setPictures([]) } setLoading(true); getApi(searchQuerry, page)
         .then((array) => {
           if (array.length < ItemsPerPage && array.length > 0) { setLastPage(true) };
@@ -43,25 +40,6 @@ useEffect(() => {
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuerry]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   const getLargeImage = (e) => {
    setLargeImage(e.target.id)
