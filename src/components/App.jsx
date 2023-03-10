@@ -21,7 +21,7 @@ export function App (){
 
 
   const [pictures, setPictures] = useState([]);
-  const [searchQuerry, setSearchQuerry] = useState('');
+  // const [searchQuerry, setSearchQuerry] = useState('');
   const [page, setPage] = useState(1);
   const [largeImage, setLargeImage] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -86,13 +86,13 @@ const  getLargeImage = (e) => {
 
 const  searchQuerryToState = (value) => {
     if (value === '') {
-      setPictures([])
+      setPictures([]);
       // this.setState({ pictures: [] });
       Notiflix.Notify.warning('Please enter the search querry');
       return;
     };
-    setSearchQuerry(value);
-    setPage(1)
+    // setSearchQuerry(value);
+    setPage(1);
     // this.setState({
     //   searchQuerry: value,
     //   page: 1,
