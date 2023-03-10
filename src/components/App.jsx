@@ -34,12 +34,8 @@ export function App (){
       .then((array) => {
         if (array.length < ItemsPerPage) {
           setLastPage(true);
-          // this.setState({ lastPage: true })
         };
         setPictures([...pictures, ...array]);
-        // this.setState(prevState => {
-        //   return { pictures: [...prevState.pictures, ...array] }
-        // });
        setLoading(false);
       });
   }, [page]);
@@ -48,26 +44,21 @@ export function App (){
     if (searchQuerry === '') { return }
     if (pictures.length > 0) {
       setPictures([])
-      // this.setState({ pictures: [] })
     };
     setLoading(true);
     getApi(searchQuerry, page)
       .then((array) => {
         if (array.length < ItemsPerPage && array.length > 0) {
           setLastPage(true)
-          // this.setState({ lastPage: true })
         };
         if (array.length === ItemsPerPage) {
           setLastPage(false)
-          // this.setState({ lastPage: false })
         };
         if (array.length) {
           setPictures(array)
-          // this.setState({ pictures: array })
         } else {
           Notiflix.Notify.failure('Please enter valid search querry');
           setPictures([])
-          // this.setState({ pictures: [] })
         };
         setLoading(false);
       })
