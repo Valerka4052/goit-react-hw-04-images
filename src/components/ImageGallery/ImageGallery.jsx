@@ -2,7 +2,7 @@ import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 import { List } from './ImageGallery.styled';
 
-export function ImageGallery ({array,getLargeImage}) {
+export function ImageGallery({ array, getLargeImage }) {
     return (
         <List onClick={getLargeImage}>
             {array.map(({ id, webformatURL, largeImageURL }) => {

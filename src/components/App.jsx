@@ -19,14 +19,13 @@ export const App = () => {
   
   useEffect(() => {
     console.log('useeffect')
-    if (page > 1&&searchQuerry) {
+    if (page > 1) {
       console.log('load more');
       setLoading(true); getApi(searchQuerry, page).then((array) => {
         if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
       });
     } else if (searchQuerry !== '') {
       console.log('search')
-      if (searchQuerry === '') { return console.log('exit search') }
       if (pictures.length > 0) { setPictures([]) } setLoading(true); getApi(searchQuerry, page)
         .then((array) => {
           if (array.length < ItemsPerPage && array.length > 0) { setLastPage(true) };
