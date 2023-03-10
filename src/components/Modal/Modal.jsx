@@ -21,7 +21,7 @@ export function Modal ({LargeImage, setShowModal}) {
     };
  Modal.propTypes = {
         LargeImage: PropTypes.string.isRequired,
-        toggleModal: PropTypes.func.isRequired,
+        setShowModal: PropTypes.func.isRequired,
     };
     
 
