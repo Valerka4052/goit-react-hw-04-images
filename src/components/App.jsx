@@ -32,7 +32,7 @@ export const App = () => {
     if (page === 1) { return console.log('exit load more')};
     setLoading(true);getApi(searchQuerry, page).then((array) => {
         if (array.length < ItemsPerPage) {setLastPage(true);};setPictures([...pictures, ...array]);setLoading(false);});
-  }, [page]);
+  }, [page, pictures, searchQuerry]);
 
   useEffect(() => {
     console.log('search')
@@ -43,7 +43,7 @@ export const App = () => {
         if (array.length === ItemsPerPage) {setLastPage(false)};
         if (array.length) { setPictures(array) }
         else {Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]);};setLoading(false);})
-    }, [searchQuerry]);
+    }, [page, pictures.length, searchQuerry]);
 
 
   
