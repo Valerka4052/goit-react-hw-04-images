@@ -24,7 +24,14 @@ export const App = () => {
       setLoading(true); getApi(searchQuerry, page).then((array) => {
         if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
       });
-    } else if (searchQuerry !== '') {
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
+
+
+useEffect(() => {
+    console.log('useeffect')
+    if (searchQuerry !== '') {
       console.log('search')
       if (pictures.length > 0) { setPictures([]) } setLoading(true); getApi(searchQuerry, page)
         .then((array) => {
@@ -35,7 +42,26 @@ export const App = () => {
         })
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuerry, page]);
+  }, [searchQuerry]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const getLargeImage = (e) => {
    setLargeImage(e.target.id)
