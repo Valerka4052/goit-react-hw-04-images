@@ -9,17 +9,6 @@ import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 
 export const App = () =>{
-  // state = {
-  //   pictures: [],
-  //   searchQuerry: '',
-  //   page: 1,
-  //   largeImage: "",
-  //   showModal: false,
-  //   loading: false,
-  //   lastPage: false,
-  // };
-
-
   const [pictures, setPictures] = useState([]);
   const [searchQuerry, setSearchQuerry] = useState('');
   const [page, setPage] = useState(1);
