@@ -19,7 +19,7 @@ export function App (){
   //   lastPage: false,
   // };
 
-  
+
   const [pictures, setPictures] = useState([]);
   const [searchQuerry, setSearchQuerry] = useState('');
   const [page, setPage] = useState(1);
@@ -80,7 +80,7 @@ const  getLargeImage = (e) => {
     setLargeImage(e.target.id)
     // this.setState({ largeImage: e.target.id });
     if(e.target.nodeName==='IMG'){
-      this.toggleModal();
+     toggleModal();
     };
   };
 
