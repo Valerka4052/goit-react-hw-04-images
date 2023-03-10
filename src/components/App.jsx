@@ -38,6 +38,7 @@ export function App (){
         setPictures([...pictures, ...array]);
        setLoading(false);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
@@ -62,6 +63,7 @@ export function App (){
         };
         setLoading(false);
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuerry]);
 
 
