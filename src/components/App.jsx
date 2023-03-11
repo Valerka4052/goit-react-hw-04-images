@@ -19,9 +19,8 @@ export const App = () => {
   
  // для кнопки Load more----------------------------
   useEffect(() => {
-    console.log(page)
     if (page > 1 && searchQuerry !== '') {
-      setLoading(true); getApi(searchQuerry, page + 1).then((array) => {
+      setLoading(true); getApi(searchQuerry, page).then((array) => {
         if (array.length < ItemsPerPage) { setLastPage(true) } setPictures(prevstate => [...prevstate, ...array]); setLoading(false)
       });
     };
@@ -30,16 +29,15 @@ export const App = () => {
 // Для кнопки Search  ------------------------------
   useEffect(() => {
     if (searchQuerry !== '') {
-       setPictures([]) 
-       setLoading(true); getApi(searchQuerry, 1)
-     .then((array) => {
-       if (array.length < ItemsPerPage && array.length > 0) { setLastPage(true) };
-       if (array.length === ItemsPerPage) { setLastPage(false) };
-       if (array.length) { setPictures(array) }
-       else { Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]) } setLoading(false)
-     });
+      setPictures([])
+      setLoading(true); getApi(searchQuerry, 1)
+        .then((array) => {
+          if (array.length < ItemsPerPage && array.length > 0) { setLastPage(true) };
+          if (array.length === ItemsPerPage) { setLastPage(false) };
+          if (array.length) { setPictures(array) }
+          else { Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]) } setLoading(false)
+        });
     };
-
   }, [searchQuerry]);
   
   const getLargeImage = (e) => {
