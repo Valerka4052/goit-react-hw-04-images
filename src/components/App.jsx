@@ -24,7 +24,6 @@ export const App = () => {
         if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
       });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
 // Для кнопки Search  ------------------------------
@@ -38,7 +37,6 @@ useEffect(() => {
           else { Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]) } setLoading(false)
         })
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuerry]);
 
   const getLargeImage = (e) => {
