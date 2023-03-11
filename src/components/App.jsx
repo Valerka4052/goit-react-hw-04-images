@@ -24,7 +24,7 @@ export const App = () => {
         if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
       });
     }
-  }, [page, pictures, searchQuerry]);
+  }, [page]);
 
 // Для кнопки Search  ------------------------------
 useEffect(() => {
@@ -37,7 +37,7 @@ useEffect(() => {
           else { Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]) } setLoading(false)
         })
     };
-  }, [page, pictures.length, searchQuerry]);
+  }, [searchQuerry]);
 
   const getLargeImage = (e) => {
    setLargeImage(e.target.id)
