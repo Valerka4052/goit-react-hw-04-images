@@ -20,18 +20,18 @@ export const App = () => {
  // для кнопки Load more----------------------------
   useEffect(() => {
     if (page > 1) {
-     loadMoreAction()
-    }
-  
+      loadMoreAction();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
 // Для кнопки Search  ------------------------------
-useEffect(() => {
+  useEffect(() => {
     if (searchQuerry !== '') {
-    searchAction()
+      searchAction();
     };
-
-}, [searchQuerry]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuerry]);
   
   
   function loadMoreAction() {
