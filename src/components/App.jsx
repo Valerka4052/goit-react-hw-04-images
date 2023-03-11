@@ -6,6 +6,7 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import Notiflix from 'notiflix';
+import { func } from 'prop-types';
 
 
 export const App = () => {
@@ -20,25 +21,36 @@ export const App = () => {
  // для кнопки Load more----------------------------
   useEffect(() => {
     if (page > 1) {
-      setLoading(true); getApi(searchQuerry, page).then((array) => {
-        if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
-      });
+     loadMoreAction()
     }
   }, [page]);
 
 // Для кнопки Search  ------------------------------
 useEffect(() => {
     if (searchQuerry !== '') {
-      if (pictures.length > 0) { setPictures([]) } setLoading(true); getApi(searchQuerry, page)
-        .then((array) => {
-          if (array.length < ItemsPerPage && array.length > 0) { setLastPage(true) };
-          if (array.length === ItemsPerPage) { setLastPage(false) };
-          if (array.length) { setPictures(array) }
-          else { Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]) } setLoading(false)
-        })
+    searchAction()
     };
-  }, [searchQuerry]);
+}, [searchQuerry]);
+  
+  
+  function loadMoreAction() {
+    setLoading(true); getApi(searchQuerry, page).then((array) => {
+        if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
+    });
+  };
 
+  
+  function searchAction()  {
+   if (pictures.length > 0) { setPictures([]) } setLoading(true); getApi(searchQuerry, page)
+     .then((array) => {
+       if (array.length < ItemsPerPage && array.length > 0) { setLastPage(true) };
+       if (array.length === ItemsPerPage) { setLastPage(false) };
+       if (array.length) { setPictures(array) }
+       else { Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]) } setLoading(false)
+     });
+  };
+  
+  
   const getLargeImage = (e) => {
    setLargeImage(e.target.id)
     if(e.target.nodeName==='IMG'){
