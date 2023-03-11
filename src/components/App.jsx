@@ -6,7 +6,6 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import Notiflix from 'notiflix';
-import { func } from 'prop-types';
 
 
 export const App = () => {
@@ -23,6 +22,7 @@ export const App = () => {
     if (page > 1) {
      loadMoreAction()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
 // Для кнопки Search  ------------------------------
@@ -30,6 +30,7 @@ useEffect(() => {
     if (searchQuerry !== '') {
     searchAction()
     };
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [searchQuerry]);
   
   
