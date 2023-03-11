@@ -19,38 +19,28 @@ export const App = () => {
   
  // для кнопки Load more----------------------------
   useEffect(() => {
-    if (page > 1) {
-      loadMoreAction();
+    console.log(page)
+    if (page > 1 && searchQuerry !== '') {
+      setLoading(true); getApi(searchQuerry, page + 1).then((array) => {
+        if (array.length < ItemsPerPage) { setLastPage(true) } setPictures(prevstate => [...prevstate, ...array]); setLoading(false)
+      });
     };
-
-  }, [page]);
+  }, [page, searchQuerry]);
 
 // Для кнопки Search  ------------------------------
   useEffect(() => {
     if (searchQuerry !== '') {
-      searchAction();
-    };
-
-  }, [searchQuerry]);
-  
-  
-  function loadMoreAction() {
-    setLoading(true); getApi(searchQuerry, page).then((array) => {
-        if (array.length < ItemsPerPage) { setLastPage(true) } setPictures([...pictures, ...array]); setLoading(false)
-    });
-  };
-
-  
-  function searchAction()  {
-   if (pictures.length > 0) { setPictures([]) } setLoading(true); getApi(searchQuerry, page)
+       setPictures([]) 
+       setLoading(true); getApi(searchQuerry, 1)
      .then((array) => {
        if (array.length < ItemsPerPage && array.length > 0) { setLastPage(true) };
        if (array.length === ItemsPerPage) { setLastPage(false) };
        if (array.length) { setPictures(array) }
        else { Notiflix.Notify.failure('Please enter valid search querry'); setPictures([]) } setLoading(false)
      });
-  };
-  
+    };
+
+  }, [searchQuerry]);
   
   const getLargeImage = (e) => {
    setLargeImage(e.target.id)
