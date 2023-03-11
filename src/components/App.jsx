@@ -22,7 +22,7 @@ export const App = () => {
     if (page > 1) {
       loadMoreAction();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [page]);
 
 // Для кнопки Search  ------------------------------
@@ -30,7 +30,7 @@ export const App = () => {
     if (searchQuerry !== '') {
       searchAction();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [searchQuerry]);
   
   
